@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        app:cardElevation="30dp">
+    <TextView
+        android:id="@+id/nombreHoroscopoTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Horoscope name"
+        android:textSize="26sp"/>
+
+        <ImageView
+            android:id="@+id/imagenImgView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/ic_launcher_background"></ImageView>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
