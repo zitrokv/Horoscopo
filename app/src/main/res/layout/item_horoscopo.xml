@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:layout_gravity="center">
+    android:layout_height="wrap_content"
+    android:layout_gravity="fill">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -16,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_gravity="fill_horizontal"
         android:text="Horoscope name"
         android:textSize="28sp"/>
     <TextView
@@ -31,10 +33,10 @@
         <ImageView
             android:id="@+id/imagenImgView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:backgroundTint="@color/black"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="20dp"
+            android:layout_gravity="fill_horizontal"
+
 
             android:src="@drawable/ic_launcher_background"></ImageView>
 

@@ -28,7 +28,7 @@ RecyclerView.Adapter<ViewHolder<Any?>>() {
         // contents of the view with that element
         //viewHolder.textView.text = dataSet[position].nombre
         viewHolder.textView.setText(dataSet[position].nombre)
-        viewHolder.fechasTextView.setText(dataSet[position].nombre)
+        viewHolder.fechasTextView.setText(dataSet[position].fecha)
         viewHolder.imagenImgView.setImageResource(dataSet[position].logo)
 
     }
