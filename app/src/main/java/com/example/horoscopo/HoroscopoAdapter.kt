@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -25,7 +26,11 @@ RecyclerView.Adapter<ViewHolder<Any?>>() {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textView.text = dataSet[position].nombre
+        //viewHolder.textView.text = dataSet[position].nombre
+        viewHolder.textView.setText(dataSet[position].nombre)
+        viewHolder.fechasTextView.setText(dataSet[position].nombre)
+        viewHolder.imagenImgView.setImageResource(dataSet[position].logo)
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -36,10 +41,14 @@ RecyclerView.Adapter<ViewHolder<Any?>>() {
 
 class ViewHolder<Bitmap>(view: View) : RecyclerView.ViewHolder(view) {
     val textView: TextView
+    val fechasTextView: TextView
+    val imagenImgView :ImageView
 
     init {
         // Define click listener for the ViewHolder's View
         textView = view.findViewById(R.id.nombreHoroscopoTextView)
+        imagenImgView = view.findViewById<ImageView?>(R.id.imagenImgView)
+        fechasTextView = view.findViewById(R.id.fechasTextView)
     }
 
     val imageUrl = "https://www.example.com/imagen.jpg"

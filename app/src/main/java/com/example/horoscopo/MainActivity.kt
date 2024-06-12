@@ -14,18 +14,18 @@ class MainActivity : AppCompatActivity() {
 
     val horoscopoList:List<Horoscopo> = listOf(
         //instanciar la clase horoscopo para los 12 signos
-        Horoscopo("aries", "Aries", 0),
-        Horoscopo("tauro", "Tauro", 0),
-        Horoscopo("geminis", "Geminis", 0),
-        Horoscopo("cancer", "Cancer", 0),
-        Horoscopo("leo", "Leo", 0),
-        Horoscopo("virgo", "Virgo", 0),
-        Horoscopo("libra", "Libra", 0),
-        Horoscopo("escorpio", "Escorpio", 0),
-        Horoscopo("sagitario", "Sagitario", 0),
-        Horoscopo("capricornio", "Capricornio", 0),
-        Horoscopo("acuario", "Acuario", 0),
-        Horoscopo("piscis", "Piscis", 0),
+        Horoscopo("aries", R.string.horoscope_name_aries, R.string.horoscope_name_aries,R.drawable.aries_icon),
+        Horoscopo("tauro", R.string.horoscope_name_taurus, R.string.horoscope_name_aries,R.drawable.taurus_icon),
+        Horoscopo("geminis",R.string.horoscope_name_gemini,R.string.horoscope_name_aries, R.drawable.gemini_icon),
+        Horoscopo("cancer",R.string.horoscope_name_cancer, R.string.horoscope_name_aries,R.drawable.cancer_icon),
+        Horoscopo("leo", R.string.horoscope_name_leo, R.string.horoscope_name_aries,R.drawable.leo_icon),
+        Horoscopo("virgo", R.string.horoscope_name_virgo, R.string.horoscope_name_aries,R.drawable.virgo_icon),
+        Horoscopo("libra", R.string.horoscope_name_libra, R.string.horoscope_name_aries,R.drawable.libra_icon),
+        Horoscopo("escorpio", R.string.horoscope_name_scorpio,R.string.horoscope_name_aries,R.drawable.scorpio_icon),
+        Horoscopo("sagitario", R.string.horoscope_name_sagittarius,R.string.horoscope_name_aries, R.drawable.sagittarius_icon),
+        Horoscopo("capricornio", R.string.horoscope_name_capricorn,R.string.horoscope_name_aries,R.drawable.capricorn_icon),
+        Horoscopo("acuario", R.string.horoscope_name_aquarius , R.string.horoscope_name_aries,R.drawable.aquarius_icon),
+        Horoscopo("piscis", R.string.horoscope_name_pisces, R.string.horoscope_name_aries,R.drawable.pisces_icon),
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
