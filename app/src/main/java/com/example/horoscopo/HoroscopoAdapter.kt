@@ -5,11 +5,12 @@ import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class HoroscopoAdapter (private val dataSet: List<Horoscopo>) :
+class HoroscopoAdapter (private val dataSet: List<Horoscopo>, private val onItemClickListener: (Int) -> Unit) :
 RecyclerView.Adapter<ViewHolder<Any?>>() {
 
     // Create new views (invoked by the layout manager)
@@ -30,6 +31,10 @@ RecyclerView.Adapter<ViewHolder<Any?>>() {
         viewHolder.textView.setText(dataSet[position].nombre)
         viewHolder.fechasTextView.setText(dataSet[position].fecha)
         viewHolder.imagenImgView.setImageResource(dataSet[position].logo)
+
+        //aqui declaramos el evento de click onItemClickListener
+        viewHolder.itemView.setOnClickListener {onItemClickListener(position)}
+
 
     }
 
