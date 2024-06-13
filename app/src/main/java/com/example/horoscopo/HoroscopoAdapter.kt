@@ -54,6 +54,7 @@ class ViewHolder<Bitmap>(view: View) : RecyclerView.ViewHolder(view) {
         textView = view.findViewById(R.id.nombreHoroscopoTextView)
         imagenImgView = view.findViewById<ImageView?>(R.id.imagenImgView)
         fechasTextView = view.findViewById(R.id.fechasTextView)
+
     }
 
     val imageUrl = "https://www.example.com/imagen.jpg"
