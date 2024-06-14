@@ -1,7 +1,9 @@
 package com.example.horoscopo
 
+import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +11,9 @@ import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.math.absoluteValue
 
-class HoroscopoAdapter (private val dataSet: List<Horoscopo>, private val onItemClickListener: (Int) -> Unit) :
+class HoroscopoAdapter (private var dataSet: List<Horoscopo>, private val onItemClickListener: (Int) -> Unit) :
 RecyclerView.Adapter<ViewHolder<Any?>>() {
 
     // Create new views (invoked by the layout manager)
@@ -36,6 +39,14 @@ RecyclerView.Adapter<ViewHolder<Any?>>() {
         viewHolder.itemView.setOnClickListener {onItemClickListener(position)}
 
 
+    }
+
+    //este metodo sirve para actualizar los datos
+    fun ActualizaDatos(newDataSet: List<Horoscopo>){
+        //newDataSet.forEach{ elem -> (elem as ImageView).setBackgroundColor (Color.BLUE) }
+        dataSet = newDataSet
+
+        notifyDataSetChanged() // comunica con el recycler view todito el listado de nuevo
     }
 
     // Return the size of your dataset (invoked by the layout manager)
