@@ -4,6 +4,8 @@ import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.text.SpannableString
+import android.text.style.BackgroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +17,8 @@ import kotlin.math.absoluteValue
 
 class HoroscopoAdapter (private var dataSet: List<Horoscopo>, private val onItemClickListener: (Int) -> Unit) :
 RecyclerView.Adapter<ViewHolder<Any?>>() {
+
+    private var highlightText: String? = null
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder<Any?> {
@@ -35,6 +39,11 @@ RecyclerView.Adapter<ViewHolder<Any?>>() {
         viewHolder.fechasTextView.setText(dataSet[position].fecha)
         viewHolder.imagenImgView.setImageResource(dataSet[position].logo)
 
+
+        if (highlightText != null) {
+            viewHolder.highlight(highlightText!!)
+        }
+
         //aqui declaramos el evento de click onItemClickListener
         viewHolder.itemView.setOnClickListener {onItemClickListener(position)}
 
@@ -42,11 +51,23 @@ RecyclerView.Adapter<ViewHolder<Any?>>() {
     }
 
     //este metodo sirve para actualizar los datos
-    fun ActualizaDatos(newDataSet: List<Horoscopo>){
+    /*fun ActualizaDatos(newDataSet: List<Horoscopo>){
         //newDataSet.forEach{ elem -> (elem as ImageView).setBackgroundColor (Color.BLUE) }
+        //newDataSet.forEach{ elem -> ((elem.nombre.toString().contains("ar",ignoreCase = true)) ) }
         dataSet = newDataSet
-
+        //newDataSet.forEach{elem -> ((getItemViewType(elem.logo)) as ImageView).setBackgroundColor(Color.BLUE)}
         notifyDataSetChanged() // comunica con el recycler view todito el listado de nuevo
+    }*/
+
+    // Este método sirve para actualizar los datos
+    fun ActualizaDatos (newDataSet: List<Horoscopo>) {
+        ActualizaDatos(newDataSet, null)
+    }
+
+    fun ActualizaDatos(newDataSet: List<Horoscopo>, highlight: String?) {
+        this.highlightText = highlight
+        dataSet = newDataSet
+        notifyDataSetChanged()
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -68,9 +89,28 @@ class ViewHolder<Bitmap>(view: View) : RecyclerView.ViewHolder(view) {
 
     }
 
+
+    // Subraya el texto que coincide con la busqueda
+    fun highlight(text: String) {
+        try {
+            val highlighted = textView.text.toString().highlight(text)
+            textView.text = highlighted
+        } catch (e: Exception) { }
+        try {
+            val highlighted = fechasTextView.text.toString().highlight(text)
+            fechasTextView.text = highlighted
+        } catch (e: Exception) { }
+    }
     val imageUrl = "https://www.example.com/imagen.jpg"
 
 
+    //ejemplo de extensión para el metodo String, que hace resaltar el texto buscado
+    fun String.highlight(text: String) : SpannableString {
+        val str = SpannableString(this)
+        val startIndex = str.indexOf(text, 0, true)
+        str.setSpan(BackgroundColorSpan(Color.MAGENTA), startIndex, startIndex + text.length, 0)
+        return str
+    }
 
 
 

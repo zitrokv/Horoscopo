@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 if (newText !=null) {
                     horoscopoList = HoroscopoProvider.findAll().filter { getString(it.nombre).contains(newText, true)
                             || getString(it.fecha).contains(newText, true) }
-                    adapter.ActualizaDatos(horoscopoList)
+                    adapter.ActualizaDatos(horoscopoList, newText)
 
                 }
                 return true
