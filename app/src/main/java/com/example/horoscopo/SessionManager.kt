@@ -26,4 +26,8 @@ class SessionManager (context: Context) {
     fun obtenerHoroscopoFavorito() : String? {
         return sharedPrefs.getString(HOROSCOPO_FAVORITO, null)
     }
+
+    fun esFavorito(horoscopeId: String) : Boolean {
+        return obtenerHoroscopoFavorito()?.equals(horoscopeId) ?: false
+    }
 }

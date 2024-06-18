@@ -31,17 +31,22 @@ class MainActivity : AppCompatActivity() {
 
         horoscopoList = HoroscopoProvider.findAll()
 
-        var customAdapter = HoroscopoAdapter(horoscopoList, { opcionClick -> verDetalle(horoscopoList[opcionClick])})
+        //var customAdapter = HoroscopoAdapter(horoscopoList, { opcionClick -> verDetalle(horoscopoList[opcionClick])})
          //adapter = customAdapter
         var recyclerView : RecyclerView= findViewById(R.id.listaHoroscopoRecyclerView)
 
         adapter = HoroscopoAdapter(horoscopoList, { opcionClick -> verDetalle(horoscopoList[opcionClick])})
 
-        customAdapter = adapter ?: HoroscopoAdapter(horoscopoList, { opcionClick -> verDetalle(horoscopoList[opcionClick])})
+        var customAdapter = adapter ?: HoroscopoAdapter(horoscopoList, { opcionClick -> verDetalle(horoscopoList[opcionClick])})
         recyclerView.adapter = customAdapter
         recyclerView.layoutManager = LinearLayoutManager(this, VERTICAL, false)
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapter.ActualizaDatos(horoscopoList)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -71,21 +76,6 @@ class MainActivity : AppCompatActivity() {
         })
         return true
         //return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId)
-        {
-            /*R.id.message -> {
-                true
-            }
-            R.id.otro -> {
-                true
-            }*/
-            R.id.buscar -> { true }
-            else -> super.onOptionsItemSelected(item)
-        }
-    //return super.onOptionsItemSelected(item)
     }
 
     fun verDetalle(horoscopo: Horoscopo){

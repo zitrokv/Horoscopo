@@ -1,5 +1,6 @@
 package com.example.horoscopo
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.BitmapFactory
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.absoluteValue
@@ -35,10 +37,11 @@ RecyclerView.Adapter<ViewHolder<Any?>>() {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         //viewHolder.textView.text = dataSet[position].nombre
-        viewHolder.textView.setText(dataSet[position].nombre)
+        /*viewHolder.textView.setText(dataSet[position].nombre)
         viewHolder.fechasTextView.setText(dataSet[position].fecha)
         viewHolder.imagenImgView.setImageResource(dataSet[position].logo)
-
+*/
+        viewHolder.render(dataSet[position])
 
         if (highlightText != null) {
             viewHolder.highlight(highlightText!!)
@@ -76,17 +79,41 @@ RecyclerView.Adapter<ViewHolder<Any?>>() {
 
 }
 
+@SuppressLint("ResourceAsColor")
 class ViewHolder<Bitmap>(view: View) : RecyclerView.ViewHolder(view) {
     val textView: TextView
     val fechasTextView: TextView
     val imagenImgView :ImageView
+    val favoritoImageView: ImageView
+    val celdaHoroscopo : LinearLayout
+        get() {
+            return this.celdaHoroscopo
+        }
 
     init {
         // Define click listener for the ViewHolder's View
         textView = view.findViewById(R.id.nombreHoroscopoTextView)
         imagenImgView = view.findViewById<ImageView?>(R.id.imagenImgView)
         fechasTextView = view.findViewById(R.id.fechasTextView)
+        favoritoImageView = view.findViewById(R.id.favoritoCorazon)
+        //celdaHoroscopo.setBackgroundColor(R.color.teal_200)
 
+    }
+
+    fun render(horoscopo: Horoscopo){
+        textView.setText(horoscopo.nombre)
+        fechasTextView.setText(horoscopo.fecha)
+        imagenImgView.setImageResource(horoscopo.logo)
+
+        val context = itemView.context
+        var esFavorito = SessionManager(context).esFavorito(horoscopo.id)
+
+        if (esFavorito) {
+            favoritoImageView.visibility = View.VISIBLE
+
+        }else {
+            favoritoImageView.visibility = View.GONE
+        }
     }
 
 

@@ -26,14 +26,6 @@
                 android:layout_weight="1"
                 android:gravity="center"/>
 
-            <ImageButton
-                android:id="@+id/botonFavorito"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_favorite"
-                android:layout_gravity="bottom|end"/>
-
-
         </FrameLayout>
     <TextView
         android:id="@+id/DetalleTextView"

@@ -1,5 +1,6 @@
 package com.example.horoscopo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -14,10 +15,11 @@ import java.time.format.DateTimeFormatter
 class DetalleActivity : AppCompatActivity() {
     lateinit var detalleHoroscopo: Horoscopo
     lateinit var sesion: SessionManager
-    lateinit var ImagenFavorito: Button
+
     lateinit var MenuItemFavorito : MenuItem
 
     var esFavorito = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle)
@@ -37,11 +39,11 @@ class DetalleActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.prediccionTextView).setText(LocalDate.now().format(
             DateTimeFormatter.ofPattern("dd-MM-yyyy")).toString())
 
-        ImagenFavorito = findViewById(R.id.botonFavorito)
 
+        //icono en menu detalle
         esFavorito = sesion.obtenerHoroscopoFavorito()?.equals(detalleHoroscopo.id) ?: false
 
-        ImagenFavorito.setOnClickListener{
+        /*ImagenFavorito.setOnClickListener{
             if (esFavorito)
             {
                 sesion.enviarHoroscopoFavorito("")
@@ -52,7 +54,7 @@ class DetalleActivity : AppCompatActivity() {
 
             esFavorito = !esFavorito
 
-        }
+        }*/
 
         //findViewById<TextView>(R.id.DetalleTextView).text = getString(detalleHoroscopo.nombre)
         //findViewById<ImageView>(R.id.detalleImageView).setImageResource(detalleHoroscopo.logo)
@@ -71,12 +73,36 @@ class DetalleActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when( item.itemId) {
-            if (esFavorito)
-                sesion.enviarHoroscopoFavorito("")
-            else
-                sesion.enviarHoroscopoFavorito(detalleHoroscopo.id)
+            R.id.menu_corazon -> {
+                if (esFavorito)
+                    sesion.enviarHoroscopoFavorito("")
+                else
+                    sesion.enviarHoroscopoFavorito(detalleHoroscopo.id)
 
+                esFavorito = !esFavorito
+                estableceIconoFavorito()
+                true
+            }
+            R.id.menu_share -> {
+                val sendIntent = Intent()
+                sendIntent.setAction(Intent.ACTION_SEND)
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send")
+                sendIntent.setType("text/plain")
 
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
+
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_activity_detail, menu)
+        MenuItemFavorito = menu.findItem(R.id.menu_corazon)
+        estableceIconoFavorito()
+        return true
     }
 }
