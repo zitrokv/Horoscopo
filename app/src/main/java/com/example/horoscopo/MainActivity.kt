@@ -1,6 +1,7 @@
 package com.example.horoscopo
 
 import android.content.Intent
+import android.graphics.Color
 import android.icu.lang.UCharacter.VerticalOrientation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -42,11 +43,13 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, VERTICAL, false)
 
 
+        recyclerView.setBackgroundColor(Color.rgb(50,67,105))
+
     }
 
     override fun onResume() {
         super.onResume()
-        adapter.ActualizaDatos(horoscopoList)
+        adapter.ActualizaDatos(horoscopoList, SessionManager(this).obtenerHoroscopoFavorito().toString())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

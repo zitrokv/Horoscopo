@@ -21,6 +21,9 @@
         android:fontFamily="sans-serif-condensed"
         android:layout_gravity="fill_horizontal"
         android:text="Horoscope name"
+        android:textColorHint="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColor="@color/white"
         android:textSize="28sp"/>
     <TextView
         android:id="@+id/fechasTextView"
@@ -28,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Horoscope name"
+        android:textColor="@color/material_on_primary_disabled"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="16sp"/>
 </LinearLayout>
@@ -36,16 +40,18 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/favoritoCorazon"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="149dp"
+            android:layout_height="149dp"
             android:src="@drawable/ic_favorite_selected"
-            android:paddingEnd="1dp"
+            android:paddingEnd="70dp"
+            android:paddingBottom="70dp"
             android:layout_gravity="bottom"
-            app:tint="@color/purple_700" />
+            app:tint="@color/white" />
+
         <ImageView
             android:id="@+id/imagenImgView"
             android:layout_width="76dp"
-            android:layout_height="76dp"
+            android:layout_height="66dp"
             android:backgroundTint="@color/black"
             android:gravity="right"
 

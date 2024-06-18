@@ -97,6 +97,7 @@ class ViewHolder<Bitmap>(view: View) : RecyclerView.ViewHolder(view) {
         fechasTextView = view.findViewById(R.id.fechasTextView)
         favoritoImageView = view.findViewById(R.id.favoritoCorazon)
         //celdaHoroscopo.setBackgroundColor(R.color.teal_200)
+        //celdaHoroscopo.setBackgroundColor(Color.rgb(244,144,23))
 
     }
 
@@ -135,7 +136,7 @@ class ViewHolder<Bitmap>(view: View) : RecyclerView.ViewHolder(view) {
     fun String.highlight(text: String) : SpannableString {
         val str = SpannableString(this)
         val startIndex = str.indexOf(text, 0, true)
-        str.setSpan(BackgroundColorSpan(Color.MAGENTA), startIndex, startIndex + text.length, 0)
+        str.setSpan(BackgroundColorSpan(Color.rgb(244,144,344)), startIndex, startIndex + text.length, 0)
         return str
     }
 

@@ -2,6 +2,7 @@ package com.example.horoscopo
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 
 class SessionManager (context: Context) {
 
@@ -25,6 +26,13 @@ class SessionManager (context: Context) {
 
     fun obtenerHoroscopoFavorito() : String? {
         return sharedPrefs.getString(HOROSCOPO_FAVORITO, null)
+    }
+
+    fun pintarFondoCelda() : Int
+    {
+
+        (sharedPrefs.getString(HOROSCOPO_FAVORITO, null)) ?: return Color.YELLOW
+        return Color.TRANSPARENT
     }
 
     fun esFavorito(horoscopeId: String) : Boolean {
