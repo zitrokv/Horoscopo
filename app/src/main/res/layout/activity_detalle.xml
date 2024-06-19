@@ -48,6 +48,19 @@
         android:layout_margin="6dp"
         app:cardCornerRadius="24dp">
 
+        <TextView
+            android:id="@+id/prediccionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:text="lee tu predicción para hoy $fecha:"
+            android:textSize="32dp" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
 
         <ImageView
             android:id="@+id/waterImageView"
@@ -61,13 +74,18 @@
             android:rotationX="58"
             android:rotationY="-19" />
 
-        <TextView
-            android:id="@+id/prediccionTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:text="lee tu predicción para hoy $fecha:"
-            android:textSize="32dp" />
+            <TextView
+                android:id="@+id/textoDelDia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="120dp"
+                android:layout_margin="20dp"
+                android:text="lee predicción para hoy $fecha:"
+                android:textSize="32dp" />
+
+
+
+        </FrameLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
 
