@@ -136,7 +136,7 @@ class ViewHolder<Bitmap>(view: View) : RecyclerView.ViewHolder(view) {
     fun String.highlight(text: String) : SpannableString {
         val str = SpannableString(this)
         val startIndex = str.indexOf(text, 0, true)
-        str.setSpan(BackgroundColorSpan(Color.rgb(244,144,344)), startIndex, startIndex + text.length, 0)
+        str.setSpan(BackgroundColorSpan(Color.rgb(244,144,255)), startIndex, startIndex + text.length, 0)
         return str
     }
 

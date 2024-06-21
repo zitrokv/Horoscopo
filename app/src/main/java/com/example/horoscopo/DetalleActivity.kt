@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.coroutines.CoroutineScope
@@ -31,7 +30,8 @@ class DetalleActivity : AppCompatActivity() {
 
 
     init {
-        textoDelDia = findViewById(R.id.textoDelDia)
+        //textoDelDia = findViewById(R.id.textoDelDia)
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +56,7 @@ class DetalleActivity : AppCompatActivity() {
         //icono en menu detalle
         esFavorito = sesion.obtenerHoroscopoFavorito()?.equals(detalleHoroscopo.id) ?: false
 
-
+        textoDelDia = findViewById(R.id.textoDelDia)
         //supportActionBar?.setTitle(detalleHoroscopo.nombre)
         //supportActionBar?.setSubtitle(detalleHoroscopo.fecha)
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -158,6 +158,7 @@ class DetalleActivity : AppCompatActivity() {
 
                     }*/
                     runOnUiThread {
+                        textoDelDia = findViewById(R.id.textoDelDia)
                         textoDelDia.text = result
                     }
 
